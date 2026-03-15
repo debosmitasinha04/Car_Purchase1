@@ -41,9 +41,19 @@
     </style>
 </head>
 <body>
-    <div class="result-box">
-        <h1>Car Booking Status</h1>
-        <a href="Payment.jsp">Payment</a>
-    </div>
+		<div class="result-box">
+    <h1>Booking Successful!</h1>
+    <p class="message">
+        Congratulations <span style="color:white;">${uName}</span>!<br>
+        Your booking for the <span style="color:white;">${cName}</span> 
+        (${vName} variant) is confirmed.
+    </p>
+    <a href="Payment.jsp">Proceed to Payment</a>
+</div>
 </body>
 </html>
+
+
+
+
+   

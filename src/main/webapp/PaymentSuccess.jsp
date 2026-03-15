@@ -52,8 +52,11 @@
 <body>
     <div class="container">
         <h2>Payment Successful!</h2>
-       
+        
+        <p>Thank you, <strong>${payer}</strong>! Your car booking is now confirmed.</p>
+        
         <a href="explore.jsp">← Back to Home</a>
     </div>
 </body>
 </html>
+

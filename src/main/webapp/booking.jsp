@@ -71,7 +71,11 @@
 <body>
   <div class="booking-card">
     <h2>🚗 Book Your Car</h2>
-    <form action="BookCarServlet" method="post">
+    <form action="bookCar" method="post">
+    
+    
+    <input type="hidden" name="carName" value="${carName}">
+    
       <label>Full Name</label>
       <input type="text" name="name" required>
 
