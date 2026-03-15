@@ -1,28 +1,26 @@
-package util;
+package util; // Make sure this matches your project's package name
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
-	 private static final String URL = "jdbc:mysql://localhost:3306/car_purchase";
-	    private static final String USER = "root";
-	    private static final String PASSWORD = "password";  // change if your MySQL password is different
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            // 1. The MySQL Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-	    public static Connection getConnection() {
-	        Connection con = null;
+            // 2. Your Clever Cloud Credentials
+            String url = "jdbc:mysql://bic9jbmocsw0fko7w6aw-mysql.services.clever-cloud.com:3306/bic9jbmocsw0fko7w6aw";
+            String user = "u0goidzvxbkbiikn";
+            String pass = "YJxGQkjZAaJt6E5zhEtc";
 
-	        try {
-	            // Load Driver
-	            Class.forName("com.mysql.cj.jdbc.Driver");
-
-	            // Create Connection
-	            con = DriverManager.getConnection(URL, USER, PASSWORD);
-
-	            System.out.println("Database Connected Successfully ✅");
-
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-
-	        return con;
-	    }
+            con = DriverManager.getConnection(url, user, pass);
+            System.out.println("Cloud Database Connected Successfully!");
+        } catch (Exception e) {
+            System.out.println("Database Connection Failed!");
+            e.printStackTrace();
+        }
+        return con;
+    }
 }
