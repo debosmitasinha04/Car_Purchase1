@@ -4,15 +4,14 @@ FROM tomcat:10-jdk17-openjdk-slim
 # Remove default Tomcat apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# 1. Copy web content (JSPs, etc.) from src/main/webapp
+# 1. Copy web content (JSPs, etc.)
 COPY src/main/webapp /usr/local/tomcat/webapps/ROOT
 
-# 2. Copy compiled classes from build/classes 
-# If 'build' is missing on GitHub, we will use 'bin'
+# 2. Copy compiled classes
 COPY build/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 
-# 3. Copy your MySQL connector from the 'lib' folder
-COPY lib/*.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+# 3. Copy MySQL connector from the ROOT folder (where it is on GitHub)
+COPY mysql-connector-j-9.6.0.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
