@@ -8,14 +8,14 @@ public class DBConnection {
         Connection con = null;
         try {
             // 1. The MySQL Driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
+         Class.forName("com.mysql.cj.jdbc.Driver");
 
             // 2. Your Clever Cloud Credentials
-            String url = "jdbc:mysql://bic9jbmocsw0fko7w6aw-mysql.services.clever-cloud.com:3306/bic9jbmocsw0fko7w6aw";
-            String user = "u0goidzvxbkbiikn";
-            String pass = "YJxGQkjZAaJt6E5zhEtc";
+         String url = "jdbc:mysql://bic9jbmocsw0fko7w6aw-mysql.services.clever-cloud.com:3306/bic9jbmocsw0fko7w6aw?useSSL=false";
+         String user = "u0goidzvxbkbiikn";
+         String pass = "YJxGQkJZaAJt6E5zhEtc";
 
-            con = DriverManager.getConnection(url, user, pass);
+         con = DriverManager.getConnection(url, user, pass);
             System.out.println("Cloud Database Connected Successfully!");
         } catch (Exception e) {
             System.out.println("Database Connection Failed!");
