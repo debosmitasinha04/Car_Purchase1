@@ -4,16 +4,15 @@ FROM tomcat:10-jdk17-openjdk-slim
 # Remove default Tomcat apps
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy your web content (JSPs, CSS, etc.)
-# Based on your Eclipse sidebar, the path is src/main/webapp
+# 1. Copy web content (JSPs, etc.) from src/main/webapp
 COPY src/main/webapp /usr/local/tomcat/webapps/ROOT
 
-# Copy your JAR files (MySQL connector, etc.)
-COPY lib/*.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
+# 2. Copy compiled classes from build/classes 
+# If 'build' is missing on GitHub, we will use 'bin'
+COPY build/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 
-# This line handles the Java classes
-# Since Render can't find 'build/classes', we will look in 'bin' or 'target'
-COPY bin /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
+# 3. Copy your MySQL connector from the 'lib' folder
+COPY lib/*.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
