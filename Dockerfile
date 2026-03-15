@@ -8,8 +8,8 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 COPY src/main/webapp /usr/local/tomcat/webapps/ROOT
 
 # 2. Copy compiled classes
-COPY build/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 
+COPY src/main/webapp/WEB-INF/classes /usr/local/tomcat/webapps/ROOT/WEB-INF/classes
 # 3. Copy MySQL connector from the ROOT folder (where it is on GitHub)
 COPY mysql-connector-j-9.6.0.jar /usr/local/tomcat/webapps/ROOT/WEB-INF/lib/
 
